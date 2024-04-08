@@ -16,11 +16,14 @@ export function Hero(){
             </div>
             <div className="flex mt-8 mb-4 gap-2 relative items-center px-[5%]">
                 <div className="flex">
-                    <div className="rounded-full w-8 h-8 bg-emerald-800">
+                    <div className="rounded-full relative overflow-hidden w-8 h-8 border-2 border-emerald-800">
+                        <img src="img/user-3.jpg" alt="" className="w-full h-full object-cover" />
                     </div>
-                    <div className="rounded-full w-8 h-8 bg-emerald-700 -ml-4">
+                    <div className="rounded-full relative overflow-hidden w-8 h-8 border-2 border-emerald-700 -ml-4">
+                        <img src="img/user-2.jpg" alt="" className="w-full h-full object-cover" />
                     </div>
-                    <div className="rounded-full w-8 h-8 bg-emerald-600 -ml-4">
+                    <div className="rounded-full relative overflow-hidden w-8 h-8 border-2 border-emerald-600 -ml-4">
+                        <img src="img/user-1.jpg" alt="" className="w-full h-full object-cover" />
                     </div>
                 </div>
                 <p className="text-xs font-semibold">132+ Total Monthly Listeners in BeMuslim</p>

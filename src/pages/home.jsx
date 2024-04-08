@@ -16,6 +16,7 @@ const Home = () => {
             title={'surah'}
             name={'Al-Baqarah(2:3)'}
             value={"الَّذِيْنَ يُؤْمِنُوْنَ بِالْغَيْبِ وَيُقِيْمُوْنَ الصَّلٰوةَ وَمِمَّا رَزَقْنٰهُمْ يُنْفِقُوْنَ"}
+            position={'text-right'}
             />
             <ListSurah/>
         </div>

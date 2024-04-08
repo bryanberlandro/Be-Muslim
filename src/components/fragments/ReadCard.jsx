@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaBookOpen } from "react-icons/fa";
 
-export function ReadCard({title, name, value}){
+export function ReadCard({title, name, value, position}){
     return(
         <>
         <div className="bg-white px-5 py-5 relative rounded-xl shadow-xl mx-auto w-[90%]">
@@ -9,7 +9,7 @@ export function ReadCard({title, name, value}){
                     <h1>{title}</h1>
                     <h1 className="font-medium">{name}</h1>
                 </div>
-                <div className="py-6 flex justify-between text-right font-medium  items-center">
+                <div className={`py-6 flex justify-between ${position} font-medium  items-center`}>
                     <p>{value}</p>
                 </div>
                 <div className="flex gap-2 pt-2 text-sm">
