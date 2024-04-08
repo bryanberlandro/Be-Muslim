@@ -35,7 +35,7 @@ export function ListSurah(){
 
     return(
         <>
-        <div className="mt-12 px-[5%]">
+        <div className="mt-12 px-[5%] py-4 rounded-xl bg-white">
             <h1 className="font-semibold text-xl">Lets start the journey of Enlightenment</h1>
             <div className="flex justify-between items-center mt-6">
                 <div className="flex text-sm border-2 rounded-full overflow-hidden items-center w-max">

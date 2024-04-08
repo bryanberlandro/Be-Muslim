@@ -29,9 +29,10 @@ export function Hero(){
                 <p className="text-xs font-semibold">132+ Total Monthly Listeners in BeMuslim</p>
             </div>
             <ReadCard
-            title={'Daily Verse'}
-            name={'Asy-Syarh(94:5)'}
-            value={'Maka, sesungguhnya beserta kesulitan ada kemudahan.'}
+            title={'surah'}
+            name={'Al-Baqarah(2:3)'}
+            value={"الَّذِيْنَ يُؤْمِنُوْنَ بِالْغَيْبِ وَيُقِيْمُوْنَ الصَّلٰوةَ وَمِمَّا رَزَقْنٰهُمْ يُنْفِقُوْنَ"}
+            position={'text-right'}
             />
         </div>
         </>

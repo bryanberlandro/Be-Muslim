@@ -13,11 +13,11 @@ export function ReadCard({title, name, value, position}){
                     <p>{value}</p>
                 </div>
                 <div className="flex gap-2 pt-2 text-sm">
-                    <button className="w-full py-2 font-medium bg-emerald-400 rounded-md flex justify-center items-center gap-2 text-white">
+                    <button className="w-full py-2 font-medium bg-emerald-500 rounded-md flex justify-center items-center gap-2 text-white">
                         <FaBookOpen/>
                         Read Now
                     </button>
-                    <button className="w-full py-2 border-emerald-400 border-2 rounded-md text-emerald-500 font-medium">
+                    <button className="w-full py-2 border-emerald-500 border-2 rounded-md text-emerald-500 font-medium">
                         All Surah
                     </button>
                 </div>
