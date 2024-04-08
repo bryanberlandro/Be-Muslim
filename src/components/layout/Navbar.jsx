@@ -1,11 +1,16 @@
-import { FaBell } from "react-icons/fa";
+import { FaBell, FaMosque } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 
 export const Navbar = () => {
     return(
         <>
-        <header className="w-full px-[5%] fixed py-5 flex justify-between">
-            <h1 className="font-marcellus font-bold text-lg text-emerald-500">Be Muslim</h1>
+        <header className="bg-white w-full z-[999] border-b-2 px-[5%] fixed py-5 flex justify-between">
+            <div className="font-bold text-lg text-emerald-500 flex items-center gap-2">
+                <FaMosque/>
+                <h1 className="font-marcellus">
+                    Be Muslim
+                </h1>
+            </div>
             <div className="flex gap-5 text-lg items-center">
                 <div className="relative">
                 <FaBell/>

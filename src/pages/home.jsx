@@ -1,16 +1,23 @@
+import { ReadCard } from "../components/fragments/ReadCard";
+import { Hero } from "../components/layout/home/Hero";
+import { ListSurah } from "../components/layout/home/ListSurah";
+import { Reciters } from "../components/layout/home/Reciters";
+
 const Home = () => {
     return (
         <>
-        <div className="w-full rounded-xl overflow-hidden relative bg-gradient-to-t from-emerald-100 h-96">
-            <img 
-            src="img/mosque.png" 
-            alt="" 
-            className="grayscale-[100] absolute bottom-0 opacity-40"
-            />
-            <div className="relative pt-24 px-[5%]">
-                <h1 className="font-medium">Guiding Light, Sacred Insights</h1>
-                <h1 className="text-xl font-semibold mt-1"><span className="text-emerald-800 font-bold">Be Muslim</span>, Your Journey with Quran, Hadith, and Prayer.</h1>
+        <div className="pb-4">
+            <Hero/>
+            <div className="pt-40 mb-10 px-[5%]">
+                <Reciters/>
+                <div className="w-full h-1 mt-5 bg-gradient-to-r from-white via-emerald-400"></div>
             </div>
+            <ReadCard
+            title={'surah'}
+            name={'Al-Baqarah(2:3)'}
+            value={"الَّذِيْنَ يُؤْمِنُوْنَ بِالْغَيْبِ وَيُقِيْمُوْنَ الصَّلٰوةَ وَمِمَّا رَزَقْنٰهُمْ يُنْفِقُوْنَ"}
+            />
+            <ListSurah/>
         </div>
         </>
     )
