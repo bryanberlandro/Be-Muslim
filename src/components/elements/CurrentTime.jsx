@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 
-export function Timer({isLoading}){
+export function CurrentTime(){
     const [currTime, setCurrTime] = useState('')
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -12,6 +13,7 @@ export function Timer({isLoading}){
             const seconds = currentDate.getSeconds()
 
             setCurrTime(`${hours < 0 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}`)
+            setIsLoading(false)
         }, 1000)
 
         return () => clearInterval(timer)
@@ -19,11 +21,11 @@ export function Timer({isLoading}){
 
     if(isLoading){
         return(
-            <div className="h-4 w-7 bg-neutral-400 animate-pulse rounded-md"></div>
+            <div className="h-2 w-14 bg-neutral-400 animate-pulse rounded-md"></div>
         )
     }
 
     return(
-        <p>{currTime ? currTime : ''}</p> 
+        <p>{currTime}</p> 
     )
 }
