@@ -31,7 +31,6 @@ const Home = () => {
                 <div className="mt-10">
                     <Reciters/>
                 </div>
-                <div className="w-full h-1 mt-5 bg-gradient-to-r from-white via-emerald-400"></div>
             </div>
             <ReadCard
             title={'Daily Verse'}
