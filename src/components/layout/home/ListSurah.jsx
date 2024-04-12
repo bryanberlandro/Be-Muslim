@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Suspense, lazy, useEffect, useState } from "react";
+import { ViewAll } from "../../elements/ViewAll";
 const SurahCard = lazy(() => import('../../fragments/SurahCard'))
 
 export function ListSurah(){
@@ -35,8 +36,8 @@ export function ListSurah(){
 
     return(
         <>
-        <div className="mt-12 px-[5%] py-4 rounded-xl bg-white">
-            <h1 className="font-semibold text-xl">Lets start the journey of Enlightenment</h1>
+        <div className="mt-12 px-[5%] py-4 overflow-x-hidden relative rounded-xl bg-white">
+            <h1 className="sub-title">Lets start the journey of Enlightenment</h1>
             <div className="flex justify-between items-center mt-6">
                 <div className="flex text-sm border-2 rounded-full overflow-hidden items-center w-max">
                     <div className="px-4 py-1 rounded-full bg-emerald-600 text-white text-sm">
@@ -46,9 +47,9 @@ export function ListSurah(){
                         <p>Juz</p>
                     </div>
                 </div>
-                <p className="underline underline-offset-2 text-emerald-600 text-right text-xs">See all surah</p>
+                <ViewAll value={'See all surah'}/>
             </div>
-            <div className="flex flex-col mt-4">
+            <div className="flex flex-col mt-4 relative">
                 <Suspense fallback={surahLoad()}>
                 {
                     surah?.slice(0,8).map(data => (
@@ -64,6 +65,13 @@ export function ListSurah(){
                 }
                 </Suspense>
             </div>
+                <div className="absolute z-10 bg-gradient-to-t from-neutral-100 via-neutral-100 bg-opacity-20 w-full left-0 h-24 bottom-0 flex justify-center items-center">
+                    <div className="w-[45%] bg-gradient-to-l from-emerald-300 rounded-md h-1"></div>
+                    <button className="px-4 w-32 py-1 rounded-md bg-emerald-400 text-white transition-all duration-150 text-sm">
+                        All Surah
+                    </button>
+                    <div className="w-[45%] bg-gradient-to-r from-emerald-300 rounded-md h-1"></div>
+                </div>
         </div>
         </>
     )

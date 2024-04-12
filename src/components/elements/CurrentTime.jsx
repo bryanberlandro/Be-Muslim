@@ -12,7 +12,7 @@ export function CurrentTime(){
             const minutes = currentDate.getMinutes()
             const seconds = currentDate.getSeconds()
 
-            setCurrTime(`${hours < 0 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}`)
+            setCurrTime(`${hours < 10 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}`)
             setIsLoading(false)
         }, 1000)
 

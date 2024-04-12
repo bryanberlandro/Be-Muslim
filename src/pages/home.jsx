@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
 import { ReadCard } from "../components/fragments/ReadCard";
-import TimeCard from "../components/fragments/TimeCard";
+import { DailyHadith } from "../components/layout/home/DailyHadith";
+import { Footer } from "../components/layout/home/Footer";
 import { Hero } from "../components/layout/home/Hero";
 import { ListSurah } from "../components/layout/home/ListSurah";
 import { Reciters } from "../components/layout/home/Reciters";
+import TimeCard from "../components/layout/home/TimeCard";
 
 
 const Home = () => {
@@ -25,7 +26,9 @@ const Home = () => {
             value={'Maka, sesungguhnya beserta kesulitan ada kemudahan.'}
             />
             <ListSurah/>
+            <DailyHadith/>
         </div>
+        <Footer/>
         </>
     )
 }

@@ -32,7 +32,7 @@ export function PrayerTime({data}){
         setIsLoading(false)
     }, [prayTime])
 
-    if(isLoading){``
+    if(isLoading){
         return(
             <div className="h-4 w-32 mb-1 mt-2 bg-gradient-to-r from-neutral-500 to-neutral-400 animate-pulse rounded-xl"></div>
         )
