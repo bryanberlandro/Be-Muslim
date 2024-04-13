@@ -5,14 +5,14 @@ export function Footer(){
     return(
         <>
         <FooterBanner/>
-        <footer className="w-full pt-4 px-4 bg-white mt-6">
+        <footer className="w-full pt-8 px-4 bg-white">
             <div className="font-bold text-lg text-emerald-500 flex items-center justify-center gap-2">
                 <FaMosque/>
                 <h1 className="font-marcellus">
                     Be Muslim
                 </h1>
             </div>
-            <div className="text-center text-sm px-10 mt-3 justify-center flex flex-col  items-center gap-6">
+            <div className="text-center text-sm px-10 pb-6 mt-3 justify-center flex flex-col  items-center gap-6">
                 <p>Discover the Essence of Islam: Enlightening Hearts, Empowering Minds.</p>
                 <div>
                     <div className="flex gap-1">

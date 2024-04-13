@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ViewAll } from "../../elements/ViewAll"
 import { useFetch } from "../../../hooks/useFetch"
 import { Loader } from "../../elements/Loader"
+import { FaWifi } from "react-icons/fa"
 
 export function DailyHadith(){
     const { data, isLoading, isError } = useFetch('https://hadis-api-id.vercel.app/hadith/bukhari')
@@ -25,9 +26,21 @@ export function DailyHadith(){
         )
     }
 
-    if(isError){
-        return <h1>Error</h1>
+    if(isError.code == "ERR_NETWORK"){
+        return (
+            <div className="flex flex-col items-center text-center px-[5%] my-5">
+                <div className="text-neutral-600 flex flex-col items-center">
+                    <FaWifi className="text-lg"/>
+                    <h1 className="font-bold text-lg">Ooops!</h1>
+                </div>
+                <p className="text-neutral-500 text-sm">No internet connection found. Check your connection or try again</p>
+            </div>
+        )
     }
+
+    if(isError){
+        return <h1>{isError.message}</h1>
+    } 
 
 
     return(
