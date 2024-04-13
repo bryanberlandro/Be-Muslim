@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { ViewAll } from "../../elements/ViewAll"
 import { useFetch } from "../../../hooks/useFetch"
+import { Loader } from "../../elements/Loader"
 
 export function DailyHadith(){
     const { data, isLoading, isError } = useFetch('https://hadis-api-id.vercel.app/hadith/bukhari')
@@ -11,7 +12,17 @@ export function DailyHadith(){
     }
 
     if(isLoading){
-        return <h1>Loading...</h1>
+        return (
+            <div className="mt-5 py-3 w-full px-[5%] bg-white rounded-xl">
+                <div className="flex items-end mt-5 justify-between">
+                    <h1 className="sub-title w-[70%]">Journey through <span className="text-emerald-600">Hadith</span> Wisdom</h1>
+                    <ViewAll value={'See all hadith'}/>
+                </div>
+                <div className="w-full h-32 flex justify-center items-center">
+                    <Loader/>
+                </div>
+            </div>
+        )
     }
 
     if(isError){
@@ -31,11 +42,11 @@ export function DailyHadith(){
                     <h1 className="font-medium">H.R {data.name}</h1>
                     <p className="text-xs">Total Hadith : {data.total}</p>
                 </div>
-                <div className="space-y-4">
-                    <p className="text-right text-sm mt-6">{data.items[6].arab}</p>
-                    <p className="text-xs text-neutral-800">
-                        <span className="text-emerald-500 font-medium">Artinya :  
-                        </span>
+                <div className="space-y-2">
+                    <p className="text-right text-sm mt-6 mb-4">{data.items[6].arab}</p>
+                    <span className="text-emerald-500 font-medium">Artinya :  
+                    </span>
+                    <p className="text-sm text-neutral-800">
                         {
                         loadMore 
                         ? data.items[6].id

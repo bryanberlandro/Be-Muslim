@@ -67,7 +67,7 @@ export function ListSurah(){
             </div>
                 <div className="absolute z-10 bg-gradient-to-t from-neutral-100 via-neutral-100 bg-opacity-20 w-full left-0 h-24 bottom-0 flex justify-center items-center">
                     <div className="w-[45%] bg-gradient-to-l from-emerald-300 rounded-md h-1"></div>
-                    <button className="px-4 w-32 py-1 rounded-md bg-emerald-400 text-white transition-all duration-150 text-sm">
+                    <button className="px-4 w-32 py-1 rounded-md bg-emerald-400 text-white transition-all duration-150 text-sm hover:scale-110">
                         All Surah
                     </button>
                     <div className="w-[45%] bg-gradient-to-r from-emerald-300 rounded-md h-1"></div>

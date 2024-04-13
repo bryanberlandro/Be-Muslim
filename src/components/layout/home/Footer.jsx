@@ -1,22 +1,40 @@
-import { FaBookOpen } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaMosque, FaTwitter } from "react-icons/fa";
+import { FooterBanner } from "./FooterBanner";
 
 export function Footer(){
     return(
         <>
-        <div className="w-full bg-emerald-700 py-6 text-white flex flex-col justify-center items-center text-center px-[5%] relative">
-            <img 
-            src="img/pattern.png" 
-            alt="" 
-            className="absolute grayscale w-full h-full object-cover"/>
-            <div className="relative">
-                <h1 className="text-lg font-bold">Begin Your Journey with BeMuslim</h1>
-                <p className="text-sm mt-2">a site that presents inspirational stories from the Quran, prayer times, and Hadith for Muslim knowledge seekers</p>
-                <button className="mx-auto mt-5 px-6 py-2 rounded-full bg-white text-emerald-700 font-medium flex items-center gap-2">
-                    <FaBookOpen/>
-                    Start Reading
-                </button>
+        <FooterBanner/>
+        <footer className="w-full pt-4 px-4 bg-white mt-6">
+            <div className="font-bold text-lg text-emerald-500 flex items-center justify-center gap-2">
+                <FaMosque/>
+                <h1 className="font-marcellus">
+                    Be Muslim
+                </h1>
             </div>
-        </div>
+            <div className="text-center text-sm px-10 mt-3 justify-center flex flex-col  items-center gap-6">
+                <p>Discover the Essence of Islam: Enlightening Hearts, Empowering Minds.</p>
+                <div>
+                    <div className="flex gap-1">
+                        <h1 className="font-medium">Email : </h1>
+                        <p>bemuslim@gmail.com</p>
+                    </div>
+                    <div className="flex gap-1">
+                        <h1 className="font-medium">Phone : </h1>
+                        <p>+62 82123123</p>
+                    </div>
+                </div>
+                <div className="flex gap-4 text-lg text-emerald-600">
+                    <FaInstagram/>
+                    <FaTwitter/>
+                    <FaFacebook/>
+                    <FaLinkedin/>
+                </div>
+            </div>
+            <div className="border-t-2 mt-4 text-neutral-700 py-2 text-xs text-center">
+                <p>Copyright © 2024 Be Muslim</p>
+            </div>
+        </footer>
         </>
     )
 }
