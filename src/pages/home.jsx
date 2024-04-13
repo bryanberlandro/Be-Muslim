@@ -10,7 +10,7 @@ import TimeCard from "../components/layout/home/TimeCard";
 const Home = () => {
     return (
         <>
-        <div className="pb-4">
+        <div className="pb-4 overflow-x-hidden">
             <div className="mb-36">
             <Hero/>
             </div>
