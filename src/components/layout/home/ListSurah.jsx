@@ -36,20 +36,20 @@ export function ListSurah(){
 
     return(
         <>
-        <div className="mt-12 px-[5%] py-4 overflow-x-hidden relative rounded-xl bg-white">
+        <div className="mt-12 px-[5%] py-4 overflow-x-hidden relative rounded-xl bg-white md:px-[7%]">
             <h1 className="sub-title">Lets start the journey of Enlightenment</h1>
-            <div className="flex justify-between items-center mt-6">
+            <div className="flex justify-between items-center mt-6 md:mt-10">
                 <div className="flex text-sm border-2 rounded-full overflow-hidden items-center w-max">
-                    <div className="px-4 py-1 rounded-full bg-emerald-600 text-white text-sm">
+                    <div className="px-4 py-1 rounded-full bg-emerald-600 text-white text-sm md:px-6 md:py-2">
                         <p>Surah</p>
                     </div>
-                    <div className="px-4 py-1">
+                    <div className="px-4 py-1 md:px-6 md:py-2">
                         <p>Juz</p>
                     </div>
                 </div>
                 <ViewAll value={'See all surah'}/>
             </div>
-            <div className="flex flex-col mt-4 relative">
+            <div className="flex flex-col mt-4 relative md:mt-8">
                 <Suspense fallback={surahLoad()}>
                 {
                     surah?.slice(0,8).map(data => (
@@ -67,7 +67,7 @@ export function ListSurah(){
             </div>
                 <div className="absolute z-10 bg-gradient-to-t from-neutral-100 via-neutral-100 bg-opacity-20 w-full left-0 h-24 bottom-0 flex justify-center items-center">
                     <div className="w-[45%] bg-gradient-to-l from-emerald-300 rounded-md h-1"></div>
-                    <button className="px-4 w-32 py-1 rounded-md bg-emerald-400 text-white transition-all duration-150 text-sm hover:scale-110">
+                    <button className="px-4 w-32 py-1 rounded-md bg-emerald-400 text-white transition-all duration-150 text-sm hover:scale-110 md:text-base md:w-36 md:py-2">
                         All Surah
                     </button>
                     <div className="w-[45%] bg-gradient-to-r from-emerald-300 rounded-md h-1"></div>
