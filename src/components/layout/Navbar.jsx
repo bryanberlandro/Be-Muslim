@@ -1,7 +1,8 @@
-import { FaBell, FaMosque } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { Sidebar } from "./Sidebar";
 import { useState } from "react";
+import { Logo } from "../elements/Logo";
 
 export const Navbar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -13,12 +14,7 @@ export const Navbar = () => {
     return(
         <>
         <header className="bg-white w-full z-[999] border-b-2 px-[5%] fixed py-5 flex justify-between md:px-[7%]">
-            <div className="font-bold text-lg text-emerald-500 flex items-center gap-2 md:text-xl">
-                <FaMosque/>
-                <h1 className="font-marcellus">
-                    Be Muslim
-                </h1>
-            </div>
+            <Logo/>
             <div className="flex gap-5 text-lg items-center md:text-xl md:gap-6">
                 <div className="relative">
                 <FaBell/>
