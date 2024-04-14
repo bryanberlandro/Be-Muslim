@@ -39,7 +39,7 @@ export function PrayerTime({data}){
     }
 
     return(
-        <h1 className="text-xl font-bold">
+        <h1 className="text-xl font-bold md:text-2xl">
             {prayTime ? capitalizeFirstLetter(prayTime) : ''} {data[prayTime]}
         </h1>
     )

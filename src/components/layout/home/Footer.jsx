@@ -31,7 +31,7 @@ export function Footer(){
                     <FaLinkedin/>
                 </div>
             </div>
-            <div className="border-t-2 mt-4 text-neutral-700 py-2 text-xs text-center">
+            <div className="border-t-2 mt-4 text-neutral-700 py-3 text-xs text-center">
                 <p>Copyright © 2024 Be Muslim</p>
             </div>
         </footer>

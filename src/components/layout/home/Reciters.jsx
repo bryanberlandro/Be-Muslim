@@ -23,6 +23,20 @@ export function Reciters(){
                             return `<span class="${className}" style="background-color: #10b981;"></span>`; // Mengubah warna pagination menjadi merah
                         },
                     }}
+                    breakpoints={{
+                        640: {
+                          slidesPerView: 2,
+                          spaceBetween: 20,
+                        },
+                        768: {
+                          slidesPerView: 3,
+                          spaceBetween: 10,
+                        },
+                        1024: {
+                          slidesPerView: 5,
+                          spaceBetween: 50,
+                        },
+                    }}
                     slidesPerView={2}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}

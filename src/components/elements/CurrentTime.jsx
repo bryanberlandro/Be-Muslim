@@ -26,6 +26,6 @@ export function CurrentTime(){
     }
 
     return(
-        <p>{currTime}</p> 
+        <p className="md:text-base">{currTime}</p> 
     )
 }
