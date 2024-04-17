@@ -10,7 +10,7 @@ import { Footer } from "../components/layout/home/Footer";
 export default function QuranPage(){
     const tabs = [
         { name: "Surah", translate: 0, isActive: true },
-        { name: "Juz", translate: 99, isActive: false },
+        { name: "Juz", translate: 100, isActive: false },
         { name: "Bookmark", translate: 200, isActive: false },
     ]
     const [activeTab, setActiveTab] = useState(0);
