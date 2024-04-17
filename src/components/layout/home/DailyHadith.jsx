@@ -46,11 +46,11 @@ export function DailyHadith(){
     return(
         <>
         <div className="mt-5 py-3 w-full px-[5%] bg-white rounded-xl md:px-[7%]">
-            <div className="flex items-end mt-5 justify-between">
-            <h1 className="sub-title w-[70%]">Journey through <span className="text-emerald-600">Hadith</span> Wisdom</h1>
-            <ViewAll value={'See all hadith'}/>
+            <div className="flex items-end mt-5 justify-between xl:max-w-7xl xl:px-[5%]">
+                <h1 className="sub-title w-[70%]">Journey through <span className="text-emerald-600">Hadith</span> Wisdom</h1>
+                <ViewAll value={'See all hadith'}/>
             </div>
-            <div className="mt-2 py-4 rounded-lg w-full md:mt-5">
+            <div className="mt-2 py-4 rounded-lg w-full md:mt-5 xl:max-w-7xl xl:px-[5%]">
                 <div className="flex justify-between items-center">
                     <h1 className="font-medium text-lg">H.R {data.name}</h1>
                     <p className="text-xs md:text-sm">Total Hadith : {data.total}</p>

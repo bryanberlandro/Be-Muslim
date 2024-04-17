@@ -40,11 +40,14 @@ const TimeCard = () => {
 
     return(
         <>
-        <div className="w-full relative overflow-hidden bg-gradient-to-tr from-emerald-800 to-emerald-500 mx-auto py-4 shadow-lg rounded-lg md:w-[90%]">
+        <div className="w-full relative flex overflow-hidden bg-gradient-to-tr from-emerald-800 to-emerald-500 mx-auto py-4 shadow-lg rounded-lg md:w-[90%] xl:mt-10 xl:w-[70%]">
                 <img src="img/mosque.png" alt="" className="absolute w-full h-full object-cover"/>
-                <div className="relative flex justify-center flex-col text-white text-xs w-full h-full px-5 md:py-2 md:gap-2 md:text-sm md:px-10">
-                    <p>{date} {monthName} {year}</p>
-                    <div>
+                <div className="relative flex justify-center flex-col text-white text-xs w-full h-full px-5 md:py-2 md:gap-2 md:text-sm md:px-10 xl:flex-col-reverse">
+                    <div className="xl:flex xl:justify-between xl:items-end xl:font-medium">
+                        <p>{date} {monthName} {year}</p>
+                        <a href="" className="hidden xl:flex xl:underline xl:underline-offset-2">All prayer time</a>
+                    </div>
+                    <div className="xl:flex xl:justify-between xl:items-start">
                         <PrayerTime data={data}/>
                         <CurrentTime/>
                     </div>

@@ -4,7 +4,7 @@ export function Sidebar({showSidebar}){
     return(
         <>
         <div 
-        className={`fixed top-0  overflow-hidden pl-1 right-0 pt-[80px] bg-gradient-to-t from-emerald-100 via-white to-white w-48 text-neutral-700 h-dvh z-[998] ${showSidebar ? 'translate-x-0' : 'translate-x-96'} transition-all duration-300 md:text-lg md:w-56`}>
+        className={`fixed top-0 overflow-hidden pl-1 right-0 pt-[80px] bg-gradient-to-t from-emerald-100 via-white to-white w-48 text-neutral-700 h-dvh z-[998] ${showSidebar ? 'translate-x-0' : 'translate-x-96'} transition-all duration-300 md:text-lg md:w- xl:hidden`}>
             <img 
             src="img/pattern.png" 
             alt="" 

@@ -9,9 +9,9 @@ import { ViewAll } from "../../elements/ViewAll";
 export function Reciters(){
     return(
         <>
-        <div>
+        <div className="xl:max-w-7xl xl:px-[5%] xl:mx-auto">
             <h1 className="sub-title">Listen to Holy Quran recited by your preferred reciters.</h1>
-            <div className="mt-4 overflow-hidden">
+            <div className="mt-4 overflow-hidden xl:mt-8">
                 <ViewAll value={'See all reciters'}/>
                 <Swiper
                     modules={[Pagination, Scrollbar, A11y, Autoplay]}
@@ -33,8 +33,8 @@ export function Reciters(){
                           spaceBetween: 10,
                         },
                         1024: {
-                          slidesPerView: 5,
-                          spaceBetween: 50,
+                          slidesPerView: 4,
+                          spaceBetween: 10,
                         },
                     }}
                     slidesPerView={2}

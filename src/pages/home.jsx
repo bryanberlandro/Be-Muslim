@@ -11,20 +11,22 @@ const Home = () => {
     return (
         <>
         <div className="pb-4 overflow-x-hidden">
-            <div className="mb-36">
+            <div className="mb-36 xl:mb-0">
             <Hero/>
             </div>
-            <div className="mb-10 px-[5%]">
+            <div className="mb-10 px-[5%] xl:px-0">
                 <TimeCard/>
-                <div className="mt-10">
+                <div className="mt-10 xl:mt-16">
                     <Reciters/>
                 </div>
             </div>
-            <ReadCard
-            title={'Daily Verse'}
-            name={'Asy-Syarh(94:5)'}
-            value={'Maka, sesungguhnya beserta kesulitan ada kemudahan.'}
-            />
+            <div className="flex justify-center items-center w-full">
+                <ReadCard
+                title={'Daily Verse'}
+                name={'Asy-Syarh(94:5)'}
+                value={'Maka, sesungguhnya beserta kesulitan ada kemudahan.'}
+                />
+            </div>
             <ListSurah/>
             <DailyHadith/>
         </div>

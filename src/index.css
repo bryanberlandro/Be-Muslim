@@ -9,3 +9,7 @@
 .sub-title{
     @apply font-semibold text-xl md:text-2xl
 }
+
+.pt-nav{
+    padding-top: calc(60px + 30px);
+}
