@@ -13,14 +13,16 @@ export function Sidebar({showSidebar}){
             alt="" 
             className="absolute grayscale w-full bottom-0  opacity-10 object-cover "/>
             <ul>
+                <Link to={`/`}>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
-                        <Link to={`/`}>Home</Link>
+                        Home
                     </li>
+                </Link>
+                <Link to={`/quran`}>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
-                        <Link to={`/quran`}>
                         Read Quran
-                        </Link>
                     </li>
+                </Link>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
                         Hadith
                     </li>

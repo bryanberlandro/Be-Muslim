@@ -3,7 +3,6 @@ import { InputSearch } from "../components/elements/InputSearch";
 import { Loader } from "../components/elements/Loader";
 import axios from "axios";
 import SurahCard from "../components/fragments/SurahCard";
-import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/home/Footer";
 
 
@@ -51,7 +50,6 @@ export default function QuranPage(){
 
     return(
         <>
-        <Navbar/>
         <div className="pt-nav px-[5%] pb-10">
             <InputSearch
             onChange={handleSearch}

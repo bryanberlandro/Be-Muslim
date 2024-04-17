@@ -38,8 +38,6 @@ export function Reciters(){
                         },
                     }}
                     slidesPerView={2}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
                     className="mt-4 h-max "
                 >
                     {
