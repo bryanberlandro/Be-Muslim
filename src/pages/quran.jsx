@@ -5,13 +5,13 @@ import axios from "axios";
 import SurahCard from "../components/fragments/SurahCard";
 import { Navbar } from "../components/layout/Navbar";
 
-const tabs = [
-    { name: "Surah", translate: 0, isActive: true },
-    { name: "Juz", translate: 99.9, isActive: false },
-    { name: "Bookmark", translate: 200, isActive: false },
-]
 
 export default function QuranPage(){
+    const tabs = [
+        { name: "Surah", translate: 0, isActive: true },
+        { name: "Juz", translate: 99, isActive: false },
+        { name: "Bookmark", translate: 200, isActive: false },
+    ]
     const [activeTab, setActiveTab] = useState(0);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true)
@@ -35,13 +35,15 @@ export default function QuranPage(){
         setActiveTab(index)
     }
 
+    console.log(activeTab)
+
     return(
         <>
         <Navbar/>
         <div className="pt-nav px-[5%]">
             <InputSearch/>
             <div className="mt-6 flex border-b-2 border-neutral-100 py-2 text-sm font-semibold relative">
-                <div className={`absolute transition-all duration-150 h-1 w-1/3 bg-emerald-300 bottom-0 rounded-full translate-x-[${tabs[activeTab].translate}%]`}></div>
+                <div className={`absolute transition-all duration-150 h-1 w-1/3  bg-emerald-300 bottom-0 rounded-full translate-x-[${tabs[activeTab].translate}%]`}></div>
                 {
                     tabs.map((tab,index) => (
                         <div 
