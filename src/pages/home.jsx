@@ -1,4 +1,5 @@
 import { ReadCard } from "../components/fragments/ReadCard";
+import { Navbar } from "../components/layout/Navbar";
 import { DailyHadith } from "../components/layout/home/DailyHadith";
 import { Footer } from "../components/layout/home/Footer";
 import { Hero } from "../components/layout/home/Hero";
@@ -7,9 +8,10 @@ import { Reciters } from "../components/layout/home/Reciters";
 import TimeCard from "../components/layout/home/TimeCard";
 
 
-const Home = () => {
+export default function HomePage(){
     return (
         <>
+        <Navbar/>
         <div className="pb-4 overflow-x-hidden">
             <div className="mb-36 xl:mb-0">
             <Hero/>
@@ -34,5 +36,3 @@ const Home = () => {
         </>
     )
 }
-
-export default Home;

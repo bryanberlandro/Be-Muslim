@@ -3,6 +3,7 @@ import { IoMenu } from "react-icons/io5";
 import { Sidebar } from "./Sidebar";
 import { useState } from "react";
 import { Logo } from "../elements/Logo";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -18,16 +19,16 @@ export const Navbar = () => {
                 <Logo/>
                 <ul className="hidden xl:flex xl:gap-20 xl:text-sm xl:font-medium">
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5 xl:py-1 xl:w-max xl:text-emerald-800">
-                        <a href="">Home</a>
+                        <Link to={'/'}>Home</Link>
                     </li>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5 xl:py-1 xl:w-max">
-                        <a href="">Read Quran</a>
+                        <Link to={'/'}>Read Quran</Link>
                     </li>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5 xl:py-1 xl:w-max">
-                        <a href="">Hadith</a>
+                        <Link to={'/'}>Hadith</Link>
                     </li>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5 xl:py-1 xl:w-max">
-                        <a href="">Quiz</a>
+                        <Link to={'/'}>Quiz</Link>
                     </li>
                 </ul>
                 <div className="flex gap-5 text-lg items-center md:text-xl md:gap-6">

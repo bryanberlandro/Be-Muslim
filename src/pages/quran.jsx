@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react"
-import { FaSearch } from "react-icons/fa"
+import { InputSearch } from "../components/elements/InputSearch";
+import { Loader } from "../components/elements/Loader";
+import axios from "axios";
+import SurahCard from "../components/fragments/SurahCard";
+import { Navbar } from "../components/layout/Navbar";
 
 const tabs = [
     { name: "Surah", translate: 0, isActive: true },
@@ -7,27 +11,36 @@ const tabs = [
     { name: "Bookmark", translate: 200, isActive: false },
 ]
 
-const QuranPage = () => {
+export default function QuranPage(){
     const [activeTab, setActiveTab] = useState(0);
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        async function fetchData(){
+            try {
+                const response = await axios.get('https://api.quran.gading.dev/surah')
+                setData(response.data.data)
+                setLoading(false)
+            } catch(err){
+                console.log(err)
+            }
+        }
+
+        fetchData()
+    }, [])
+
 
     const handleTabClick = (index) => {
         setActiveTab(index)
     }
 
-
     return(
         <>
+        <Navbar/>
         <div className="pt-nav px-[5%]">
-            <div className="flex items-center bg-white rounded-full w-full px-6 py-2 justify-between text-sm shadow-sm border-2 border-emerald-100 transition-all duration-100 group focus-within:border-emerald-400 focus-within:scale-[1.02]">
-                <input 
-                type="text" 
-                placeholder="Al-fatihah, Al-Mulk" 
-                className="outline-none border-none w-[80%] "
-                />
-                <FaSearch className="text-emerald-600"/>
-            </div>
-
-            <div className="mt-10 flex border-b-2 border-neutral-100 py-2 text-sm font-semibold relative">
+            <InputSearch/>
+            <div className="mt-6 flex border-b-2 border-neutral-100 py-2 text-sm font-semibold relative">
                 <div className={`absolute transition-all duration-150 h-1 w-1/3 bg-emerald-300 bottom-0 rounded-full translate-x-[${tabs[activeTab].translate}%]`}></div>
                 {
                     tabs.map((tab,index) => (
@@ -41,10 +54,25 @@ const QuranPage = () => {
                     ))
                 }
             </div>
+            
+            <div className={`flex flex-col mt-2 ${loading ? 'h-96 justify-center items-center' : ''}`}>
+                {
+                    loading 
+                    ?   <Loader/>
+                    :   data.map(item => (
+                        <SurahCard
+                            key={item.number}
+                            ayat={item.name.short}
+                            number={item.number}
+                            surah={item.name.transliteration.en}
+                            total={item.numberOfVerses}
+                            translate={item.name.translation.en}
+                        />
+                        ))
+                }
+            </div>
 
         </div>
         </>
     )
 }
-
-export default QuranPage

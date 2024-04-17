@@ -1,4 +1,7 @@
 /* eslint-disable react/prop-types */
+
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/no-unescaped-entities */
 export function Sidebar({showSidebar}){
     return(
@@ -10,18 +13,20 @@ export function Sidebar({showSidebar}){
             alt="" 
             className="absolute grayscale w-full bottom-0  opacity-10 object-cover "/>
             <ul>
-                <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
-                    <a href="">Home</a>
-                </li>
-                <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
-                    <a href="">Read Qur'an</a>
-                </li>
-                <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
-                    <a href="">Hadith</a>
-                </li>
-                <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
-                    <a href="">Quiz</a>
-                </li>
+                    <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
+                        <Link to={`/`}>Home</Link>
+                    </li>
+                    <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
+                        <Link to={`/quran`}>
+                        Read Quran
+                        </Link>
+                    </li>
+                    <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
+                        Hadith
+                    </li>
+                    <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
+                        Quiz
+                    </li>
             </ul>
         </div>
         </>
