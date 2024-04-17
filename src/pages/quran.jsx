@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react"
 import { FaSearch } from "react-icons/fa"
 
+const tabs = [
+    { name: "Surah", translate: 0, isActive: true },
+    { name: "Juz", translate: 99.9, isActive: false },
+    { name: "Bookmark", translate: 200, isActive: false },
+]
+
 const QuranPage = () => {
+    const [activeTab, setActiveTab] = useState(0);
+
+    const handleTabClick = (index) => {
+        setActiveTab(index)
+    }
+
+
     return(
         <>
         <div className="pt-nav px-[5%]">
@@ -12,17 +26,22 @@ const QuranPage = () => {
                 />
                 <FaSearch className="text-emerald-600"/>
             </div>
-            <div className="mt-10 flex border-b-2 py-2 text-sm font-semibold">
-                <div className="w-1/3 text-center">
-                    <h1>Surah</h1>
-                </div>
-                <div className="w-1/3 text-center">
-                    <h1>Juz</h1>
-                </div>
-                <div className="w-1/3 text-center">
-                    <h1>Bookmark</h1>
-                </div>
+
+            <div className="mt-10 flex border-b-2 border-neutral-100 py-2 text-sm font-semibold relative">
+                <div className={`absolute transition-all duration-150 h-1 w-1/3 bg-emerald-300 bottom-0 rounded-full translate-x-[${tabs[activeTab].translate}%]`}></div>
+                {
+                    tabs.map((tab,index) => (
+                        <div 
+                        key={index}
+                        onClick={() => handleTabClick(index)} 
+                        className={`w-1/3 text-center cursor-pointer ${activeTab === index ? 'text-emerald-500' : 'text-neutral-400'}`}
+                        >
+                            <h1>{tab.name}</h1>
+                        </div>
+                    ))
+                }
             </div>
+
         </div>
         </>
     )
