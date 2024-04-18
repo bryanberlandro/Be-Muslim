@@ -8,15 +8,16 @@ import { Footer } from "../components/layout/home/Footer";
 
 export default function QuranPage(){
     const tabs = [
-        { name: "Surah", translate: 0, isActive: true },
-        { name: "Juz", translate: 100, isActive: false },
-        { name: "Bookmark", translate: 200, isActive: false },
+        { name: "Surah", index: 0, isActive: true },
+        { name: "Juz", index: 1, isActive: false },
+        { name: "Bookmark", index: 2, isActive: false },
     ]
     const [activeTab, setActiveTab] = useState(0);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true)
     const [searchRes, setSearchRes] = useState([])
     const [searchTerm, setSearchTerm] = useState('');
+    const [translate, setTranslate] = useState('')
 
     useEffect(() => {
         async function fetchData(){
@@ -35,6 +36,13 @@ export default function QuranPage(){
 
     const handleTabClick = (index) => {
         setActiveTab(index)
+        if(index == 1){
+            setTranslate('translate-x-[99.9%]')
+        } else if (index == 2){
+            setTranslate('translate-x-[200%]')
+        } else {
+            setTranslate('translate-x-0')
+        }
     }
 
     function handleSearch(e){
@@ -55,7 +63,7 @@ export default function QuranPage(){
             onChange={handleSearch}
             />
             <div className="mt-6 flex border-b-2 border-neutral-100 py-2 text-sm font-semibold relative">
-                <div className={`absolute transition-all duration-300 h-1 w-1/3  bg-emerald-300 bottom-0 rounded-full translate-x-[${tabs[activeTab].translate}%]`}></div>
+                <div className={`absolute transition-all duration-300 h-1 w-1/3  bg-emerald-300 bottom-0 rounded-full ${translate}`}></div>
                 {
                     tabs.map((tab,index) => (
                         <div 
