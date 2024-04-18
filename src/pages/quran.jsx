@@ -4,6 +4,7 @@ import { Loader } from "../components/elements/Loader";
 import axios from "axios";
 import SurahCard from "../components/fragments/SurahCard";
 import { Footer } from "../components/layout/home/Footer";
+import { TabBar } from "../components/elements/TabBar";
 
 
 export default function QuranPage(){
@@ -66,22 +67,27 @@ export default function QuranPage(){
                 <div className={`absolute transition-all duration-300 h-1 w-1/3  bg-emerald-300 bottom-0 rounded-full ${translate}`}></div>
                 {
                     tabs.map((tab,index) => (
-                        <div 
+                        <TabBar
                         key={index}
-                        onClick={() => handleTabClick(index)} 
-                        className={`w-1/3 text-center cursor-pointer ${activeTab === index ? 'text-emerald-500' : 'text-neutral-400'}`}
-                        >
-                            <h1>{tab.name}</h1>
-                        </div>
+                        activeTab={activeTab}
+                        index={tab.index}
+                        name={tab.name}
+                        onClick={() => handleTabClick(index)}
+                        />
                     ))
                 }
             </div>
             
             <div className={`flex flex-col mt-2 ${loading ? 'h-96 justify-center items-center' : ''}`}>
-                {
-                    loading 
-                    ?   (<Loader/>)
-                    :   (
+                {loading ? (<Loader/>)
+                    :   searchTerm && searchRes.length === 0 ? 
+                        (
+                            <div className="h-44 flex justify-center items-center text-center">
+                                <p className="text-neutral-400 font-bold text-sm">Your search didn't match any surah. Please try a different keyword.</p>  
+                            </div>
+                        ) 
+                    :  
+                    (
                         (searchTerm ? searchRes : data).map(item => (
                             <SurahCard
                                 key={item.number}
@@ -92,7 +98,7 @@ export default function QuranPage(){
                                 translate={item.name.translation.en}
                             />
                         ))
-                        )
+                    )
                 }
             </div>
         </div>
