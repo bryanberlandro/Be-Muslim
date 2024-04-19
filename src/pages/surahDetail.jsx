@@ -2,7 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { FaChevronDown } from "react-icons/fa"
 import { useParams } from "react-router-dom"
-import { FiBookOpen, FiBookmark, FiPlay } from "react-icons/fi";
+import { FiArrowRight, FiBookOpen, FiBookmark, FiPlay } from "react-icons/fi";
+import { Footer } from "../components/layout/home/Footer";
 
 export default function SurahDetailPage(){
     const { id, surahName } = useParams()
@@ -51,7 +52,7 @@ export default function SurahDetailPage(){
                 <h1>Page {data.number}</h1>
             </div>
         </div>
-        <div className="pt-36 px-[5%]">
+        <div className="pt-36 pb-10 px-[5%]">
             <h1 className="font-medium text-lg">{data.number}</h1>
 
             <div className="text-center space-y-3">
@@ -100,7 +101,7 @@ export default function SurahDetailPage(){
             {
                 data.verses?.map(ver => (
                 <div key={ver.number.inSurah} className="border-b-2 px-4 py-4">
-                    <div className="text-sm flex justify-between items-center font-medium">
+                    <div className="text-sm flex justify-between items-center font-medium text-emerald-600">
                         <div className="flex items-center gap-5">
                             <h1>{ver.meta.juz} : {ver.number.inQuran}</h1>
                             <FiBookOpen/>
@@ -118,6 +119,16 @@ export default function SurahDetailPage(){
                 ))
             }
             </div>
+
+            <div className="flex justify-between my-10 text-sm">
+                <button className="px-10 py-2 rounded-md border-2  border-emerald-500 text-emerald-500">Read again</button>
+                <button className="flex items-center gap-2 text-emerald-600 font-semibold">
+                    Next surah
+                    <FiArrowRight/>
+                </button>
+            </div>
+
+            <Footer/>
 
         </div>
         </>
