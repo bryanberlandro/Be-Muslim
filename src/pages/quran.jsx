@@ -64,7 +64,7 @@ export default function QuranPage(){
 
         const inputValue = e.target.value.toLowerCase()
         setSearchTerm(inputValue)
-
+        
         const filteredData = surahData.filter((item) => 
             item.name.transliteration.en.toLowerCase().includes(inputValue)
         )
@@ -102,7 +102,9 @@ export default function QuranPage(){
                     searchTerm={searchTerm}
                     />
 
-                    <TabJuz/>
+                    <TabJuz
+                    activeTab={activeTab}
+                    />
 
                     <div className="w-1/3 bg-white">
                         <ErrorMsg msg={"No bookmark yet"}/>
