@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ReadCard } from "../components/fragments/ReadCard";
 import { DailyHadith } from "../components/layout/home/DailyHadith";
 import { Footer } from "../components/layout/home/Footer";
@@ -8,6 +9,10 @@ import TimeCard from "../components/layout/home/TimeCard";
 
 
 export default function HomePage(){
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
         <div className="pb-4 overflow-x-hidden">

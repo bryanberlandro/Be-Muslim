@@ -16,6 +16,7 @@ export function TabSurah({loading, searchTerm, searchRes, data}){
                 (
                     (searchTerm ? searchRes : data).map(item => (
                         <SurahCard
+                            id={item.number}
                             key={item.number}
                             ayat={item.name.short}
                             number={item.number}

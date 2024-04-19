@@ -7,7 +7,6 @@ import { Loader } from "../../elements/Loader";
 export function TabJuz({activeTab}){
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true)
-    console.log(activeTab)
 
     useEffect(() => {
         setData(JuzData.juzs);
