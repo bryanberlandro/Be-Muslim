@@ -9,6 +9,7 @@ export function TabJuz(){
         setData(JuzData.juzs);
     }, [])
 
+    console.log(data)
     return(
         <>
         <div className="w-1/3 flex flex-col mt-4 gap-4 h-max">
