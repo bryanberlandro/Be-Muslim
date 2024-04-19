@@ -57,6 +57,11 @@ export default function QuranPage(){
     }
 
     function handleSearch(e){
+        setTranslate('translate-x-0')
+        setActiveTab(0)
+        setTransform('translate-x-0')
+        setLoading(false)
+
         const inputValue = e.target.value.toLowerCase()
         setSearchTerm(inputValue)
 
