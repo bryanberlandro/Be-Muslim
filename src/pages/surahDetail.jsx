@@ -1,15 +1,20 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { FaChevronDown } from "react-icons/fa"
 import { useParams } from "react-router-dom"
-import { FiArrowRight, FiBookOpen, FiBookmark, FiPlay } from "react-icons/fi";
+import { FiArrowRight, FiFastForward, FiPlay } from "react-icons/fi";
 import { Footer } from "../components/layout/home/Footer";
+import { ContextMenu } from "../components/fragments/ContextMenu";
+import { DetailBar } from "../components/fragments/DetailBar";
+import { SubText } from "../components/fragments/SubText";
+import { AyahCard } from "../components/fragments/AyahCard";
+import { Loader } from "../components/elements/Loader";
+import { AiFillBackward, AiFillForward, AiFillPlayCircle } from "react-icons/ai";
+import { FaPlay } from "react-icons/fa";
 
 export default function SurahDetailPage(){
     const { id, surahName } = useParams()
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [showMore, setShowMore] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -26,32 +31,27 @@ export default function SurahDetailPage(){
     }, [])
 
 
-    function handleShowMore(){
-        setShowMore(!showMore)
-    }
+    
 
     console.log(data)
 
     if(loading){
         return(
-            <h1>....</h1>
+            <div className="pt-60 flex justify-center">
+                <Loader/>
+            </div>
         )
     }
 
 
     return(
         <>
-        <div className="fixed top-[70px] bg-emerald-600 text-white w-full py-4 flex px-[5%] justify-between text-sm">
-            <div className="flex items-center gap-2 text-sm">
-                <h1>{data.name.transliteration.en}</h1>
-                <FaChevronDown/>
-            </div>
-            <div className="flex items-center gap-2">
-                <h1 className="text-neutral-200">{data.numberOfVerses} Ayah</h1>
-                <p>/</p>
-                <h1>Page {data.number}</h1>
-            </div>
-        </div>
+        <ContextMenu
+        name={data.name.transliteration.en}
+        number={data.number}
+        verse={data.numberOfVerses}
+        />
+
         <div className="pt-36 pb-10 px-[5%]">
             <h1 className="font-medium text-lg">{data.number}</h1>
 
@@ -64,58 +64,30 @@ export default function SurahDetailPage(){
             </div>
 
             <div className="text-sm mt-10">
-                <div className="mt-5">
-                    <h1 className="text-emerald-600 font-semibold text-base">Tafsir</h1>
-                    <p>
-                        {
-                        showMore 
-                            ?
-                            data.tafsir.id
-                            :
-                            data.tafsir.id.substring(0,60)
-                        }... 
-                        <span className="text-emerald-500 font-medium cursor-pointer" onClick={handleShowMore}
-                        >
-                            {showMore ? 'hide' : 'show more'}
-                        </span>
-                    </p>
-                </div>
-                <div className="rounded-lg bg-emerald-500 text-white px-5 py-3 flex justify-between divide-x-2 divide-emerald-200 shadow-sm mt-8">
-                    <div className="space-y-1 w-1/3 text-center">
-                        <h1 className="text-xs text-neutral-100">Revelation</h1>
-                        <p className="font-medium">{data.revelation.id}</p>
-                    </div>
-                    <div className="space-y-1 w-1/3 text-center">
-                        <h1 className="text-xs text-neutral-100">Sequence</h1>
-                        <p className="font-medium">{data.sequence}</p>
-                    </div>
-                    <div className="space-y-1 w-1/3 text-center">
-                        <h1 className="text-xs text-neutral-100">Verses</h1>
-                        <p className="font-medium">{data.numberOfVerses}</p>
-                    </div>
-                </div>
-                
+                <SubText
+                value={data.tafsir.id}
+                title={"Tafsir"}
+                />
+                <DetailBar
+                revelation={data.revelation.id}
+                sequence={data.sequence}
+                verse={data.numberOfVerses}
+                />
             </div>
 
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-10">
             {
                 data.verses?.map(ver => (
-                <div key={ver.number.inSurah} className="border-b-2 px-4 py-4">
-                    <div className="text-sm flex justify-between items-center font-medium text-emerald-600">
-                        <div className="flex items-center gap-5">
-                            <h1>{ver.meta.juz} : {ver.number.inQuran}</h1>
-                            <FiBookOpen/>
-                            <FiPlay/>
-                        </div>
-                        <FiBookmark/>
-                    </div>
-                    <div className="text-right py-5 text-xl">
-                        <h1>{ver.text.arab}</h1>
-                    </div>
-                    <div className="text-sm">
-                        <h1>{ver.text.transliteration.en}</h1>
-                    </div>
-                </div>
+                    <AyahCard
+                    key={ver.number.inQuran}
+                    arabic={ver.text.arab}
+                    audio={ver.audio.secondary[0]}
+                    ayah={ver.number.inSurah}
+                    juz={ver.meta.juz}
+                    transliteration={ver.text.transliteration.en}
+                    translation={ver.translation.id}
+                    
+                    />
                 ))
             }
             </div>
@@ -127,10 +99,23 @@ export default function SurahDetailPage(){
                     <FiArrowRight/>
                 </button>
             </div>
-
-            <Footer/>
-
         </div>
+
+        <div className="w-full fixed bottom-0 pb-4 z-10 bg-white rounded-t-xl">
+            <div className="w-full h-1 bg-neutral-300">
+                <div className="h-1 w-32 bg-emerald-300"></div>
+            </div>
+            <div className="flex justify-between w-full text-xs pt-1 px-5">
+                <p>00.02</p>
+                <p className="text-neutral-400">00.10</p>
+            </div>
+            <div className="flex gap-8 items-center justify-center">
+                <AiFillBackward/>
+                <FaPlay/>
+                <AiFillForward/>
+            </div>
+        </div>
+        <Footer/>
         </>
     )
 }

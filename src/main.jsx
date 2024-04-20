@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/quran' element={<QuranPage/>}/>
-        <Route path='/surah/:id/:surahName' element={<SurahDetailPage/>}/>
+        <Route path='/quran/surah/:id/:surahName' element={<SurahDetailPage/>}/>
       </Routes>
     </HashRouter>
   </React.StrictMode>,
