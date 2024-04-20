@@ -60,21 +60,13 @@ export function AyahCard({juz, ayah, arabic, transliteration, audio, translation
             <div className="text-right py-10 text-2xl">
                 <h1>{arabic}</h1>
             </div>
-            <div className="text-sm font-medium">
+            <div className="text-sm font-medium space-y-2">
                 <h1>{transliteration}</h1>
-            </div>
-            <div className="text-sm mt-5 space-y-1">
-                <h1 className="font-medium text-emerald-600">Meanings</h1>
-                <p className="text-neutral-600">{translation}</p>
+                <p className="text-neutral-500">{translation}</p>
             </div>
             <audio id={`audio${ayah}`} hidden controls className="w-full mt-2">
                 <source src={audio} type="audio/mp3"/>
             </audio>
-            {/* <div className="w-full h-1 bg-neutral-300 rounded-lg mt-5">
-                <div className="w-0 h-1 bg-emerald-300 transition-all ease-in-out relative" style={{width: progressBarWidth ? progressBarWidth : 0}}>
-                    <div className="rounded-full absolute right-0 -top-[2px] h-2 w-2 bg-emerald-400"></div>
-                </div>
-            </div> */}
         </div>
         </>
     )

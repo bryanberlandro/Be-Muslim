@@ -8,9 +8,9 @@ import { DetailBar } from "../components/fragments/DetailBar";
 import { SubText } from "../components/fragments/SubText";
 import { AyahCard } from "../components/fragments/AyahCard";
 import { Loader } from "../components/elements/Loader";
-import { AiFillBackward, AiFillForward, AiFillInfoCircle, AiOutlineInfo } from "react-icons/ai";
-import { FaInfo, FaPlay } from "react-icons/fa";
-import { FaX, FaXmark } from "react-icons/fa6";
+import { AiFillBackward, AiFillForward, AiFillInfoCircle } from "react-icons/ai";
+import { FaPlay } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 import { FormatTime } from "../components/utils/FormatTime";
 
 export default function SurahDetailPage(){
@@ -28,7 +28,9 @@ export default function SurahDetailPage(){
         setDuration(FormatTime(dur))
     }
 
-    // console.log(progressBarWidth)
+    function handleClosePlayer(){
+        setShowPlayer(!showPlayer)
+    }
 
     useEffect(() => {
         async function fetchData(){
@@ -113,18 +115,20 @@ export default function SurahDetailPage(){
 
         <div className={`w-full fixed bottom-0 pb-4 z-10 bg-white rounded-t-xl transition-all duration-500 ${showPlayer ? 'translate-y-0' : 'translate-y-96'}`}>
             <div className="w-full h-1 bg-neutral-300">
-                <div className="h-1 w-0 bg-emerald-300" style={{width: progressBarWidth ? progressBarWidth : 0}}></div>
+                <div className="w-0 h-1 bg-emerald-300 transition-all ease-in-out relative" style={{width: progressBarWidth ? progressBarWidth : 0}}>
+                    <div className="rounded-full absolute right-0 -top-[2px] h-2 w-2 bg-emerald-400"></div>
+                </div>
             </div>
             <div className="flex justify-between w-full text-xs pt-1 px-5">
                 <p>{currTime}</p>
                 <p className="text-neutral-400">{duration}</p>
             </div>
-            <div className="flex gap-8 items-center justify-center">
+            <div className="flex gap-8 items-center justify-center pt-4">
                 <AiFillInfoCircle/>
                 <AiFillBackward/>
                 <FaPlay/>
                 <AiFillForward/>
-                <FaXmark/>
+                <FaXmark onClick={handleClosePlayer}/>
             </div>
         </div>
         <Footer/>

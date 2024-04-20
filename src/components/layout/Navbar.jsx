@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaBell } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { Sidebar } from "./Sidebar";
@@ -5,7 +6,7 @@ import { useState } from "react";
 import { Logo } from "../elements/Logo";
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+export const Navbar = ({display}) => {
     const [showSidebar, setShowSidebar] = useState(false);
 
     function handleShowSidebar(){
@@ -14,7 +15,7 @@ export const Navbar = () => {
 
     return(
         <>
-        <header className="bg-white w-full z-[999] border-b-2 px-[5%] fixed py-5 flex justify-between md:px-[7%] xl:py-4 xl:px-[5%]">
+        <header className={`bg-white w-full z-[999] border-b-2 px-[5%] fixed py-5 ${display ? display : "flex"} justify-between md:px-[7%] xl:py-4 xl:px-[5%]`}>
             <div className="w-full xl:max-w-7xl flex justify-between xl:mx-auto">
                 <Logo/>
                 <ul className="hidden xl:flex xl:gap-20 xl:text-sm xl:font-medium">

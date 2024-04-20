@@ -15,6 +15,7 @@ export default function HomePage(){
 
     return (
         <>
+
         <div className="pb-4 overflow-x-hidden">
             <div className="mb-36 xl:mb-0">
             <Hero/>
