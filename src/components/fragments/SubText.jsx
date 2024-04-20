@@ -18,8 +18,8 @@ export function SubText({title, value}){
                     ?
                     value
                     :
-                    value.substring(0,60)
-                }... 
+                    value.substring(0,60)+"..."
+                }
                 <span className="text-emerald-500 font-medium cursor-pointer" onClick={handleShowMore}
                 >
                     {showMore ? 'hide' : 'show more'}

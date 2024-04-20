@@ -1,21 +1,34 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { FiArrowRight, FiFastForward, FiPlay } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import { Footer } from "../components/layout/home/Footer";
 import { ContextMenu } from "../components/fragments/ContextMenu";
 import { DetailBar } from "../components/fragments/DetailBar";
 import { SubText } from "../components/fragments/SubText";
 import { AyahCard } from "../components/fragments/AyahCard";
 import { Loader } from "../components/elements/Loader";
-import { AiFillBackward, AiFillForward, AiFillPlayCircle } from "react-icons/ai";
-import { FaPlay } from "react-icons/fa";
+import { AiFillBackward, AiFillForward, AiFillInfoCircle, AiOutlineInfo } from "react-icons/ai";
+import { FaInfo, FaPlay } from "react-icons/fa";
+import { FaX, FaXmark } from "react-icons/fa6";
+import { FormatTime } from "../components/utils/FormatTime";
 
 export default function SurahDetailPage(){
     const { id, surahName } = useParams()
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [showPlayer, setShowPlayer] = useState(false)
+    const [progressBarWidth, setProgressBarWidth] = useState(0)
+    const [currTime, setCurrTime] = useState(0)
+    const [duration, setDuration] = useState(0)
+
+    function getProgressBar(width, currTime, dur){
+        setProgressBarWidth(width)
+        setCurrTime(FormatTime(currTime))
+        setDuration(FormatTime(dur))
+    }
+
+    // console.log(progressBarWidth)
 
     useEffect(() => {
         async function fetchData(){
@@ -30,11 +43,6 @@ export default function SurahDetailPage(){
         
         fetchData()
     }, [])
-
-
-    
-
-    console.log(data)
 
     if(loading){
         return(
@@ -87,8 +95,8 @@ export default function SurahDetailPage(){
                     juz={ver.meta.juz}
                     transliteration={ver.text.transliteration.en}
                     translation={ver.translation.id}
-                    isPlaying={isPlaying}
-                    setIsPlaying={setIsPlaying}
+                    setShowPlayer={setShowPlayer}
+                    getProgressBar={getProgressBar}
                     />
                 ))
             }
@@ -103,18 +111,20 @@ export default function SurahDetailPage(){
             </div>
         </div>
 
-        <div className={`w-full fixed bottom-0 pb-4 z-10 bg-white rounded-t-xl transition-all duration-500 ${isPlaying ? 'translate-y-0' : 'translate-y-96'}`}>
+        <div className={`w-full fixed bottom-0 pb-4 z-10 bg-white rounded-t-xl transition-all duration-500 ${showPlayer ? 'translate-y-0' : 'translate-y-96'}`}>
             <div className="w-full h-1 bg-neutral-300">
-                <div className="h-1 w-32 bg-emerald-300"></div>
+                <div className="h-1 w-0 bg-emerald-300" style={{width: progressBarWidth ? progressBarWidth : 0}}></div>
             </div>
             <div className="flex justify-between w-full text-xs pt-1 px-5">
-                <p>00.02</p>
-                <p className="text-neutral-400">00.10</p>
+                <p>{currTime}</p>
+                <p className="text-neutral-400">{duration}</p>
             </div>
             <div className="flex gap-8 items-center justify-center">
+                <AiFillInfoCircle/>
                 <AiFillBackward/>
                 <FaPlay/>
                 <AiFillForward/>
+                <FaXmark/>
             </div>
         </div>
         <Footer/>
