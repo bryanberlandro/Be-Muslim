@@ -12,6 +12,7 @@ import { AiFillBackward, AiFillForward, AiFillInfoCircle } from "react-icons/ai"
 import { FaPlay } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import { FormatTime } from "../components/utils/FormatTime";
+import { Header } from "../components/fragments/Header";
 
 export default function SurahDetailPage(){
     const { id, surahName } = useParams()
@@ -57,6 +58,7 @@ export default function SurahDetailPage(){
 
     return(
         <>
+        <Header linkTo="/quran"/>
         <ContextMenu
         name={data.name.transliteration.en}
         number={data.number}

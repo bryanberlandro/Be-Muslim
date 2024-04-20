@@ -6,6 +6,7 @@ import { Hero } from "../components/layout/home/Hero";
 import { ListSurah } from "../components/layout/home/ListSurah";
 import { Reciters } from "../components/layout/home/Reciters";
 import TimeCard from "../components/layout/home/TimeCard";
+import { Navbar } from "../components/layout/Navbar"
 
 
 export default function HomePage(){
@@ -14,8 +15,8 @@ export default function HomePage(){
     }, []);
 
     return (
-        <>
-
+        <> 
+        <Navbar/>
         <div className="pb-4 overflow-x-hidden">
             <div className="mb-36 xl:mb-0">
             <Hero/>

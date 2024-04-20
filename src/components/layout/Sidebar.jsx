@@ -26,6 +26,11 @@ export function Sidebar({showSidebar}){
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
                         Hadith
                     </li>
+                <Link to={`/prayer-time`}>
+                    <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
+                        Prayer Time
+                    </li>
+                </Link>
                     <li className="w-full py-4 hover:bg-emerald-50 px-4 rounded-md md:py-5">
                         Quiz
                     </li>

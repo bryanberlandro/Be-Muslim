@@ -23,8 +23,8 @@ export function AyahCard({juz, ayah, arabic, transliteration, audio, translation
         }
     }, [])
 
+    const progressBarWidth = (currTime / duration) * 100 + '%'
     useEffect(() => {
-        const progressBarWidth = (currTime / duration) * 100 + '%'
         getProgressBar(progressBarWidth, currTime, duration)
     }, [currTime])
     

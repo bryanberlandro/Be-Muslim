@@ -6,6 +6,7 @@ import { TabBar } from "../components/elements/TabBar";
 import { TabSurah } from "../components/layout/quran/TabSurah";
 import { TabJuz } from "../components/layout/quran/TabJuz";
 import { ErrorMsg } from "../components/elements/ErrorMsg";
+import { Header } from "../components/fragments/Header";
 
 const tabs = [
     { name: "Surah", index: 0, isActive: true },
@@ -74,6 +75,7 @@ export default function QuranPage(){
 
     return(
         <>
+        <Header/>
         <div className="pt-nav px-[5%] pb-10">
             <InputSearch
             onChange={handleSearch}
