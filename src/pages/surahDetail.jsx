@@ -15,6 +15,7 @@ export default function SurahDetailPage(){
     const { id, surahName } = useParams()
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
+    const [isPlaying, setIsPlaying] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -86,7 +87,8 @@ export default function SurahDetailPage(){
                     juz={ver.meta.juz}
                     transliteration={ver.text.transliteration.en}
                     translation={ver.translation.id}
-                    
+                    isPlaying={isPlaying}
+                    setIsPlaying={setIsPlaying}
                     />
                 ))
             }
@@ -101,7 +103,7 @@ export default function SurahDetailPage(){
             </div>
         </div>
 
-        <div className="w-full fixed bottom-0 pb-4 z-10 bg-white rounded-t-xl">
+        <div className={`w-full fixed bottom-0 pb-4 z-10 bg-white rounded-t-xl transition-all duration-500 ${isPlaying ? 'translate-y-0' : 'translate-y-96'}`}>
             <div className="w-full h-1 bg-neutral-300">
                 <div className="h-1 w-32 bg-emerald-300"></div>
             </div>

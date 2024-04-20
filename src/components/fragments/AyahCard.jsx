@@ -2,10 +2,7 @@
 import { useEffect, useState } from "react";
 import { FiBookOpen, FiBookmark, FiPlay } from "react-icons/fi";
 
-export function AyahCard({juz, ayah, arabic, transliteration, audio, translation, }){
-    const [isPlaying, setIsPlaying] = useState(false)
-    const [loadTime, setLoadTime] = useState(true)
-    
+export function AyahCard({juz, ayah, arabic, transliteration, audio, translation, isPlaying, setIsPlaying}){    
     const tooglePlay = () => {
         const audioEl = document.getElementById(`audio${ayah}`)
 
