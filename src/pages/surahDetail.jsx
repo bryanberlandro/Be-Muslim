@@ -49,9 +49,12 @@ export default function SurahDetailPage(){
 
     if(loading){
         return(
+            <>
+            <Header linkTo="/quran"/>
             <div className="pt-60 flex justify-center">
                 <Loader/>
             </div>
+            </>
         )
     }
 
@@ -101,6 +104,7 @@ export default function SurahDetailPage(){
                     translation={ver.translation.id}
                     setShowPlayer={setShowPlayer}
                     getProgressBar={getProgressBar}
+                    surahName={surahName}
                     />
                 ))
             }

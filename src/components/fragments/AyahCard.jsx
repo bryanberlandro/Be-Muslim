@@ -4,15 +4,69 @@ import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 import { FiBookOpen, FiBookmark, FiPlay } from "react-icons/fi";
 
-export function AyahCard({juz, ayah, arabic, transliteration, audio, translation, setShowPlayer, getProgressBar})
+export function AyahCard({juz, surahName, ayah, arabic, transliteration, audio, translation, setShowPlayer, getProgressBar})
 {
     const markedData = JSON.parse(localStorage.getItem('bookmark'))
     const [currTime, setCurrTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [marked, setMarked] = useState(false)
     const [showToast, setShowToast] = useState(false)
-    const [data, setData] = useState([markedData])
+    const [data, setData] = useState(markedData)
+    const [isBookmarked, setIsBookmarked] = useState(false)
+
+    const handleBookmark = () => {
+        setIsBookmarked(true)
+        setShowToast(true)
+        const dataAyah =  {
+            name: surahName,
+            juz: juz, 
+            ayah: ayah, 
+            arabic: arabic, 
+            transliteration: transliteration, 
+            audio: audio, 
+            translation: translation
+        }
+
+        if(data){
+            setData([...data, dataAyah])
+        } else {
+            setData([dataAyah])
+        }
+    }
+
+    useEffect(() => {
+        const selectedAyah = document.getElementById(`${surahName}_${ayah}`)
+        if(!isBookmarked){
+            setShowToast(false)
+            selectedAyah.classList.remove('bg-emerald-50')
+            return
+        }
+        selectedAyah.classList.add('bg-emerald-50')
+        const isTimeout = setTimeout(() => {
+            setShowToast(false)
+        }, 2500)
+        return () => clearTimeout(isTimeout)    
+    }, [isBookmarked])
+
+    useEffect(() => {
+        if(data){
+            localStorage.setItem('bookmark', JSON.stringify(data));
+            console.log(data)
+        }
+    }, [data])
+
+    useEffect(() => {
+        const bookmarkData = JSON.parse(localStorage.getItem('bookmark'));
+        if (bookmarkData) {
+            const isBookmarked = bookmarkData.find(dt => dt.name === surahName && dt.ayah === ayah);
+            if (isBookmarked) {
+                setIsBookmarked(true);
+                const selectedAyah = document.getElementById(`${surahName}_${ayah}`);
+                selectedAyah.classList.add('bg-emerald-50');
+            }
+        }
+    }, []);
+    
 
     const updateTime = () => {
         const audioEl = document.getElementById(`audio${ayah}`)
@@ -21,11 +75,6 @@ export function AyahCard({juz, ayah, arabic, transliteration, audio, translation
     }
 
     useEffect(() => {
-        const bookmarkData = localStorage.getItem('bookmark')
-        if(!bookmarkData){
-            localStorage.setItem('bookmark',JSON.stringify([]))
-        }
-
         const audioEl = document.getElementById(`audio${ayah}`)
         audioEl.addEventListener('timeupdate', updateTime)
 
@@ -49,48 +98,13 @@ export function AyahCard({juz, ayah, arabic, transliteration, audio, translation
             } else {
                 audioEl.pause();
                 setIsPlaying(false)
-                
             }
         }
     }
 
-    const handleBookmark = () => {
-        setMarked(!marked)
-        setShowToast(true)
-        const dataAyah =  {
-            juz: juz, 
-            ayah: ayah, 
-            arabic: arabic, 
-            transliteration: transliteration, 
-            audio: audio, 
-            translation: translation
-        }
-        const bookmarkData = JSON.parse(localStorage.getItem('bookmark'))
-        const updateBookmark = [...bookmarkData, dataAyah]
-        localStorage.setItem('bookmark', JSON.stringify(updateBookmark));
-
-        setData(updateBookmark)
-    }
-
-    useEffect(() => {
-        const selectedAyah = document.getElementById(`ayah${ayah}`)
-        if(!marked){
-            setShowToast(false)
-            selectedAyah.classList.remove('bg-emerald-50')
-            return
-        }
-        selectedAyah.classList.add('bg-emerald-50')
-        const isTimeout = setTimeout(() => {
-            setShowToast(false)
-        }, 2500)
-        return () => clearTimeout(isTimeout)    
-    }, [marked])
-
-
-    
     return(
         <>
-        <div id={`ayah${ayah}`} className="border-b-2 px-4 py-4 relative">
+        <div id={`${surahName}_${ayah}`} className="border-b-2 px-4 py-4 relative">
             <div className="text-lg flex justify-between items-center font-medium text-emerald-600">
                 <div className="flex items-center gap-5">
                     <h1>{juz} : {ayah}</h1>
@@ -100,7 +114,7 @@ export function AyahCard({juz, ayah, arabic, transliteration, audio, translation
                     className="cursor-pointer hover:scale-95"/>
                 </div>
                 {
-                    marked 
+                    isBookmarked 
                     ? 
                     <BsFillBookmarkCheckFill onClick={handleBookmark}/>
                     :

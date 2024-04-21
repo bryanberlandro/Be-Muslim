@@ -5,8 +5,8 @@ import { Footer } from "../components/layout/home/Footer";
 import { TabBar } from "../components/elements/TabBar";
 import { TabSurah } from "../components/layout/quran/TabSurah";
 import { TabJuz } from "../components/layout/quran/TabJuz";
-import { ErrorMsg } from "../components/elements/ErrorMsg";
 import { Header } from "../components/fragments/Header";
+import { TabBookmark } from "../components/layout/quran/TabBookmarks";
 
 const tabs = [
     { name: "Surah", index: 0, isActive: true },
@@ -108,9 +108,7 @@ export default function QuranPage(){
                     activeTab={activeTab}
                     />
 
-                    <div className="w-1/3 bg-white">
-                        <ErrorMsg msg={"No bookmark yet"}/>
-                    </div>
+                    <TabBookmark/>
                 </div>
             </div>
         </div>
